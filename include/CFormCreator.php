@@ -25,38 +25,6 @@ class CFormCreator
         echo('</div>');
     }
 
-    public function createInputTel(string $name, string $label)
-    {
-        echo('<div class="flexForm">');
-        echo('<label for="' . $name . '">' . $label . ':</label>');
-        echo('<input type="tel" name="' . $name . '" id="' . $name . '" pattern="[0-9]{10}" required>');
-        echo('</div>');
-    }
-
-    public function createInputTime(string $name, string $label)
-    {
-        echo('<div class="flexForm">');
-        echo('<label for="' . $name . '">' . $label . ':</label>');
-        echo('<input type="time" name="' . $name . '" id="' . $name . '" min="16:00" max="22:00" required>');
-        echo('</div>');
-    }
-
-    public function createInputDate(string $name, string $label)
-    {
-        echo('<div class="flexForm">');
-        echo('<label for="' . $name . '">' . $label . ':</label>');
-        echo('<input type="date" name="' . $name . '" id="' . $name . '" required>');
-        echo('</div>');
-    }
-
-    public function createInputNumber(string $name, string $label, int $min, int $max)
-    {
-        echo('<div class="flexForm">');
-        echo('<label for="' . $name . '">' . $label . ':</label>');
-        echo('<input type="number" name="' . $name . '" id="' . $name . '" min="' . $min . '" max="' . $max . '" required>');
-        echo('</div>');
-    }
-
     public function createSubmit(string $label)
     {
         echo('<div class="flexForm">');
