@@ -10,7 +10,7 @@ if(!empty($_POST))
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $query = "INSERT INTO users (`username`, `password`) VALUES ($username, $password)";
+    $query = "INSERT INTO users (`username`, `password`) VALUES ('$username', '$password')";
     $app->getdb()->query($query);
 }
 
