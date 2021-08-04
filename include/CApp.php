@@ -45,7 +45,12 @@ class CApp
         </head>
         <body>
         <header>
-
+            <nav class="menu">
+                <ul>
+                    <li><a href="index.php">Hem</a></li>
+                    <li><a href="login.php">Login</a></li>
+                </ul>
+            </nav>
         </header>
         <section class="content">
             
