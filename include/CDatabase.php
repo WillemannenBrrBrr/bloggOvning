@@ -34,6 +34,24 @@ class CDatabase
 		return $result;
 	}
 
+	public function insert(string $table, string $field, string $value)
+	{
+		$query = "INSERT INTO $table ($field) VALUES ($value)";
+		$this->query($query);
+	}
+
+	public function selectByField(string $table, string $field, string $value)
+	{
+		$query = "SELECT * FROM $table WHERE $field = '$value'";
+		$result = $this->query($query);
+		
+		if($result->num_rows == 0)
+		{
+			return null;
+		}
+		return $result->fetch_assoc();
+	}
+
     ////////////////////////////////
 	//variabler
     private $m_settings = [];

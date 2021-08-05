@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("CFormCreator.php");
 require_once("CDatabase.php");
 
@@ -19,6 +20,11 @@ function redirect(string $url)
 {
 	header("location: $url");
 	die();
+}
+
+function isLoggedIn()
+{
+    return isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true;
 }
 
 class CApp
@@ -48,7 +54,20 @@ class CApp
             <nav class="menu">
                 <ul>
                     <li><a href="index.php">Hem</a></li>
-                    <li><a href="login.php">Login</a></li>
+
+                    <?php
+
+                    if(isLoggedIn())
+                    {
+                        echo("<li><a href='logout.php'>Logga ut</a></li>");
+                    }
+                    else
+                    {
+                        echo("<li><a href='login.php'>Logga in</a></li>");
+                    }
+
+                    ?>
+
                 </ul>
             </nav>
         </header>

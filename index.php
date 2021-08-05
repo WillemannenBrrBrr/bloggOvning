@@ -3,9 +3,15 @@ require_once("include/CApp.php");
 
 $app->renderHeader("Hem");
 
-$form = $app->getForm();
-
-
+if(isLoggedIn())
+{
+    $username = $_SESSION["userData"]["username"];
+    echo("Välkommen " . $username);
+}
+else
+{
+    echo("Välkommen");
+}
 
 $app->renderFooter();
 
