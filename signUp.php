@@ -1,7 +1,7 @@
 <?php
 require_once("include/CApp.php");
 
-$app->renderHeader("Registrering");
+$app->renderHeader("Registrera dig");
 
 $form = $app->getForm();
 
