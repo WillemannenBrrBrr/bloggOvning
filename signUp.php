@@ -7,10 +7,14 @@ $form = $app->getForm();
 
 if(!empty($_POST))
 {
-    $username = htmlspecialchars($_POST["username"]);
-    $password = htmlspecialchars(password_hash($_POST["password"], PASSWORD_DEFAULT));
+    $username = $_POST["username"];
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-    $app->getdb()->insert("users", "`username`, `password`", "'$username', '$password'");
+    $data = ["username"=>$username, "password"=>$password];
+
+    $app->getdb()->insert("users", $data);
+
+    redirect("login.php");
 }
 
 $form->openForm();

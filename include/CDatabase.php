@@ -34,14 +34,54 @@ class CDatabase
 		return $result;
 	}
 
-	public function insert(string $table, string $field, string $value)
+	private function escape(string $data)
 	{
-		$query = "INSERT INTO $table ($field) VALUES ($value)";
+		$data = htmlspecialchars($data);
+		return $this->m_connection->real_escape_string($data);
+	}
+
+	public function insert(string $table, array $data)
+	{
+		if(empty($data))
+		{
+			throw new Exeption("no data porvided, array is empty");
+		}
+
+		$query = "INSERT INTO $table (";
+		$counter = 1;
+
+		foreach($data as $field=>$value)
+		{
+			$field = $this->escape($field);
+			$query .= "`$field`";
+
+			if($counter < count($data))
+			{
+				$query .= ", ";
+			}
+			$counter++;
+		}
+		$query .= ") VALUES (";
+
+		$counter = 1;
+		foreach($data as $field=>$value)
+		{
+			$value = $this->escape($value);
+			$query .= "'$value'";
+
+			if($counter < count($data))
+			{
+				$query .= ", ";
+			}
+			$counter++;
+		}
 		$this->query($query);
 	}
 
 	public function selectByField(string $table, string $field, string $value)
 	{
+		$value = $this->escape($value);
+
 		$query = "SELECT * FROM $table WHERE $field = '$value'";
 		$result = $this->query($query);
 		
