@@ -54,12 +54,15 @@ class CApp
             <nav class="menu">
                 <ul>
                     <li><a href="index.php">Hem</a></li>
+                    <li><a href="posts.php">Inlägg</a></li>
 
                     <?php
 
                     if(isLoggedIn())
                     {
+                        $userId = $_SESSION["userData"]["id"];
                         echo("<li><a href='logout.php'>Logga ut</a></li>");
+                        echo("<li><a href='profile.php?id=" . $userId . "'>Min profil</a></li>");
                     }
                     else
                     {

@@ -42,11 +42,11 @@ class CDatabase
 
 	public function insert(string $table, array $data)
 	{
+		
 		if(empty($data))
 		{
-			throw new Exeption("no data porvided, array is empty");
+			throw new Exception("No data provided. Array is empty");
 		}
-
 		$query = "INSERT INTO $table (";
 		$counter = 1;
 
@@ -54,12 +54,13 @@ class CDatabase
 		{
 			$field = $this->escape($field);
 			$query .= "`$field`";
-
+			
 			if($counter < count($data))
 			{
 				$query .= ", ";
 			}
 			$counter++;
+
 		}
 		$query .= ") VALUES (";
 
@@ -68,13 +69,17 @@ class CDatabase
 		{
 			$value = $this->escape($value);
 			$query .= "'$value'";
-
+			
 			if($counter < count($data))
 			{
 				$query .= ", ";
 			}
 			$counter++;
+
 		}
+
+		$query .= ")";
+
 		$this->query($query);
 	}
 
