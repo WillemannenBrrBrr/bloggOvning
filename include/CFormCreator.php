@@ -20,9 +20,14 @@ class CFormCreator
     public function createInput(string $type, string $name, string $label)
     {
         echo('<div class="flexForm">');
-        echo('<label for="' . $name . '">' . $label . ':</label>');
-        echo('<input type="' . $type . '" name="' . $name . '" id="' . $name . '" required>');
+        /* echo('<label for="' . $name . '">' . $label . ':</label>'); */
+        echo('<input placeholder="' . $label . '" type="' . $type . '" name="' . $name . '" id="' . $name . '" required>');
         echo('</div>');
+    }
+
+    public function createTextArea(string $name, string $label)
+    {
+        echo('<textarea placeholder="' . $label . '" name="' . $name . '"></textarea>');
     }
 
     public function createSubmit(string $label)
