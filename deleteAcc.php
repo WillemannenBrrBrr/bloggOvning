@@ -6,7 +6,7 @@ $_SESSION["loggedIn"] = false;
 session_destroy();
 if(isset($_GET["id"]))
 {
-    $id = $_GET["id"];
+    $id = intval($_GET["id"]);
 }
 
 $query = "DELETE FROM users WHERE id = $id";
