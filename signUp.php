@@ -16,11 +16,16 @@ if(!empty($_POST))
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
     $data = ["username"=>$username, "password"=>$password];
+    $app->getDB()->insert("users", $data);
 
-    $app->getdb()->insert("users", $data);
+    $user = $app->getdb()->selectByField("users", "username", $username);
+    
+    $_SESSION["loggedIn"] = true;
+    $_SESSION["userData"] = $user;
 
+    redirect("index.php");
 
-    redirect("login.php");
+    /* redirect("login.php"); */
 }
 
 $form->openForm();

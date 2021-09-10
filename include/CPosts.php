@@ -42,10 +42,13 @@ class CPosts
     {
         $query = "SELECT username FROM users WHERE id = " . $data["userId"] . "";
         $result = $this->m_app->getDB()->query($query);
-        $username = $result->fetch_assoc();
-        if(empty($usrename))
+        if(empty($result->num_rows))
         {
             $username["username"] = "Inget anvendarnamn hittades";  
+        }
+        else
+        {
+            $username = $result->fetch_assoc();
         }
 
         $dateText = date("d-m-Y H:i", $data["date"]);

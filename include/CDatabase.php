@@ -87,7 +87,7 @@ class CDatabase
 	{
 		$value = $this->escape($value);
 
-		$query = "SELECT * FROM $table WHERE $field = '$value'";
+		$query = "SELECT * FROM `$table` WHERE $field = '$value'";
 		$result = $this->query($query);
 		
 		if($result->num_rows == 0)
@@ -96,6 +96,8 @@ class CDatabase
 		}
 		return $result->fetch_assoc();
 	}
+
+
 
 	public function selectAll(string $table)
 	{
