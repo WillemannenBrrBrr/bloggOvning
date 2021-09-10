@@ -19,6 +19,7 @@ if(!empty($_POST))
 
     $app->getdb()->insert("users", $data);
 
+
     redirect("login.php");
 }
 

@@ -97,6 +97,13 @@ class CDatabase
 		return $result->fetch_assoc();
 	}
 
+	public function selectAll(string $table)
+	{
+		$query = "SELECT * FROM $table";
+		$result = $this->query($query);
+		return $result;
+	}
+
     ////////////////////////////////
 	//variabler
     private $m_settings = [];
