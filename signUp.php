@@ -7,25 +7,32 @@ $form = $app->getForm();
 
 if(!empty($_POST))
 {
-    if($_POST["password"] != $_POST["passwordRepeat"])
-    {
-        die("Ditt lösenord passar inte med repetationen");
-    }
-
     $username = $_POST["username"];
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-    $data = ["username"=>$username, "password"=>$password];
-    $app->getDB()->insert("users", $data);
-
-    $user = $app->getdb()->selectByField("users", "username", $username);
+    $usernameCheck = $app->getDB()->selectByField("users", "username", $username);
+    if(!empty($usernameCheck))
+    {
+        echo("användarnamnet är redan uptaget");
+    }
+    else
+    {
+        if($_POST["password"] != $_POST["passwordRepeat"])
+        {
+            die("Ditt lösenord passar inte med repetationen");
+        }
     
-    $_SESSION["loggedIn"] = true;
-    $_SESSION["userData"] = $user;
-
-    redirect("index.php");
-
-    /* redirect("login.php"); */
+        $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    
+        $data = ["username"=>$username, "password"=>$password];
+        $app->getDB()->insert("users", $data);
+    
+        $user = $app->getdb()->selectByField("users", "username", $username);
+        
+        $_SESSION["loggedIn"] = true;
+        $_SESSION["userData"] = $user;
+    
+        redirect("index.php");
+    }
 }
 
 $form->openForm();

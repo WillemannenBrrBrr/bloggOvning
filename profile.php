@@ -8,7 +8,9 @@ $userId = $_SESSION["userData"]["id"];
 
 echo("Användarnamn: " . $username . "</br>");
 
-echo("<a href='deleteAcc.php?id=$userId'>Radera mitt konto</a>");
+?>
+<button id="deleteAccButton" >Radera mitt konto</button>
+<?php
 
 $app->renderFooter();
 
