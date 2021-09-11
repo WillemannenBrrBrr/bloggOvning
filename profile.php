@@ -4,8 +4,8 @@ require_once("include/CApp.php");
 $app->renderHeader("Min profil");
 
 $username = $_SESSION["userData"]["username"];
-$userId = $_SESSION["userData"]["id"];
-
+$profilePic = $_SESSION["userData"]["image"];
+echo("<img class='profilePic' src='images/" . $profilePic . "'>" . "</br>");
 echo("Användarnamn: " . $username . "</br>");
 
 ?>

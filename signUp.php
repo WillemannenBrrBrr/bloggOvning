@@ -7,12 +7,14 @@ $form = $app->getForm();
 
 if(!empty($_POST))
 {
+    $target = "images/".basename($_FILES["image"]["name"]);
+    $image = $_FILES["image"]["name"];
     $username = $_POST["username"];
 
     $usernameCheck = $app->getDB()->selectByField("users", "username", $username);
     if(!empty($usernameCheck))
     {
-        echo("användarnamnet är redan uptaget");
+        echo("Användarnamnet är redan uptaget");
     }
     else
     {
@@ -22,9 +24,14 @@ if(!empty($_POST))
         }
     
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    
-        $data = ["username"=>$username, "password"=>$password];
+
+        $data = ["username" => $username, "password" => $password, "image" => $image];
         $app->getDB()->insert("users", $data);
+
+        if(!move_uploaded_file($_FILES["image"]["tmp_name"], $target))
+        {
+            throw new Exception("någonting gick snett");
+        }
     
         $user = $app->getdb()->selectByField("users", "username", $username);
         
@@ -39,6 +46,7 @@ $form->openForm();
 $form->createInput("text", "username", "Användarnamn");
 $form->createInput("password", "password", "Lösenord");
 $form->createInput("password", "passwordRepeat", "Repetera lösenordet");
+$form->createInput("file", "image", "Profilbild");
 $form->createSubmit("registrera");
 
 $app->renderFooter();

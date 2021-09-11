@@ -41,14 +41,8 @@ div.post div.footer
 	font-size: 0.8em;
 }
 
-/* div#footer
+img.profilePic
 {
-	background-color: black;
-	padding: 1em;
-	color: white;
+	height: 100px;
+	width: 100px;
 }
-
-div#footer a
-{
-	color: white;
-} */

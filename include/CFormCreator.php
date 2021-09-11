@@ -14,7 +14,7 @@ class CFormCreator
 
     public function openForm()
     {
-        echo('<form method="post">');
+        echo('<form method="post" enctype="multipart/form-data">');
     }
 
     public function createInput(string $type, string $name, string $label)
