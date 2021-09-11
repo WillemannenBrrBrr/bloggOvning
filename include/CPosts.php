@@ -57,7 +57,7 @@ class CPosts
                 <h2><?php echo($data["subject"]); ?></h2>
                 <div class="text"><?php echo(nl2br($data["text"])) ?></div>
                 <div class="footer">
-                    <p class="author"><?php echo($username["username"]) ?></p>
+                    <p class="author"><a href="profile.php?id=<?php echo($data["userId"]) ?>"><?php echo($username["username"]) ?></a></p>
                     <p class="date"><?php echo($dateText) ?></p>
                 </div>
             </div>

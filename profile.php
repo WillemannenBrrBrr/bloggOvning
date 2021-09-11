@@ -3,14 +3,22 @@ require_once("include/CApp.php");
 
 $app->renderHeader("Min profil");
 
-$username = $_SESSION["userData"]["username"];
-$profilePic = $_SESSION["userData"]["image"];
+$userId = intval($_GET["id"]);
+
+$user = $app->getDB()->selectByField("users", "id", $userId);
+
+$username = $user["username"];
+$profilePic = $user["image"];
+
 echo("<img class='profilePic' src='images/" . $profilePic . "'>" . "</br>");
 echo("Användarnamn: " . $username . "</br>");
 
-?>
-<button id="deleteAccButton" >Radera mitt konto</button>
-<?php
+if($userId == $_SESSION["userData"]["id"])
+{
+    ?>
+    <button id="deleteAccButton" >Radera mitt konto</button>
+    <?php
+}
 
 $app->renderFooter();
 
