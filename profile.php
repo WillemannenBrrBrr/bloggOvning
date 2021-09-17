@@ -13,11 +13,14 @@ $profilePic = $user["image"];
 echo("<img class='profilePic' src='images/" . $profilePic . "'>" . "</br>");
 echo("Användarnamn: " . $username . "</br>");
 
-if($userId == $_SESSION["userData"]["id"])
+if(isset($_SESSION["userData"]["id"]))
 {
-    ?>
-    <button id="deleteAccButton" >Radera mitt konto</button>
-    <?php
+    if($userId == $_SESSION["userData"]["id"])
+    {
+        ?>
+        <button id="deleteAccButton">Radera mitt konto</button>
+        <?php
+    }
 }
 
 $app->renderFooter();

@@ -43,6 +43,8 @@ div.post div.footer
 
 img.profilePic
 {
-	height: 100px;
-	width: 100px;
+	max-height: 100px;
+	max-width: 100px;
+	width: auto;
+	height: auto;
 }
