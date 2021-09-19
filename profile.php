@@ -3,8 +3,10 @@ require_once("include/CApp.php");
 
 $app->renderHeader("Min profil");
 
-$userId = intval($_GET["id"]);
-
+if(isset($_GET["id"]))
+{
+    $userId = intval($_GET["id"]);
+}
 $user = $app->getDB()->selectByField("users", "id", $userId);
 
 $username = $user["username"];

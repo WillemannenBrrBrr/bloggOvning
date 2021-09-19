@@ -30,10 +30,10 @@ class CFormCreator
         echo('<textarea placeholder="' . $label . '" name="' . $name . '"></textarea>');
     }
 
-    public function createSubmit(string $name, string $label)
+    public function createSubmit(string $label)
     {
         echo('<div class="flexForm">');
-        echo('<input type="submit" name="' . $name . '" value="' . $label . '">');
+        echo('<input type="submit" value="' . $label . '">');
         echo('</div>');
     }
 

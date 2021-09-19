@@ -5,7 +5,7 @@ $app->renderHeader("Logga in");
 
 $form = $app->getForm();
 
-if(!empty($_POST["loggin"]))
+if(!empty($_POST))
 {
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -32,7 +32,7 @@ if(!empty($_POST["loggin"]))
 $form->openForm();
 $form->createInput("text", "username", "Användarnamn");
 $form->createInput("password", "password", "Lösenord");
-$form->createSubmit("loggin", "Logga in");
+$form->createSubmit("Logga in");
 
 ?>
 <a href="signUp.php">Registrera dig</a>

@@ -5,7 +5,7 @@ $app->renderHeader("Registrera dig");
 
 $form = $app->getForm();
 
-if(!empty($_POST["register"]))
+if(!empty($_POST))
 {
     $target = "images/".basename($_FILES["image"]["name"]);
     $image = $_FILES["image"]["name"];
@@ -47,7 +47,7 @@ $form->createInput("text", "username", "Användarnamn");
 $form->createInput("password", "password", "Lösenord");
 $form->createInput("password", "passwordRepeat", "Repetera lösenordet");
 $form->createInput("file", "image", "Profilbild");
-$form->createSubmit("register", "Registrera");
+$form->createSubmit("Registrera");
 
 $app->renderFooter();
 
