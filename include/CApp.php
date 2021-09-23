@@ -89,7 +89,14 @@ class CApp
         </section>
         <footer>
             <?php
-                echo("Inloggad som " . $_SESSION["userData"]["username"]);
+                if(isLoggedIn())
+                {
+                    echo("Inloggad som " . $_SESSION["userData"]["username"]);
+                }
+                else
+                {
+                    echo("Du är inte inloggad");
+                }
             ?>
         </footer>
         <script src="script/tools.js"></script>

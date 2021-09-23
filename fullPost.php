@@ -32,6 +32,17 @@ else
 $dateText = date("d-m-Y H:i", $postData["date"]);
 ?>
     <div class="post">
+        <?php
+            if(isLoggedIn())
+            {
+                if($postData["userId"] == $_SESSION["userData"]["id"])
+                {
+                    ?>
+                        <a href="deletePost.php?postId=<?php echo($postData["id"]) ?>">Ta bort inlägget</a>
+                    <?php
+                }
+            }
+        ?>
         <h2><?php echo($postData["subject"]); ?></h2>
         <div class="text"><?php echo(nl2br($postData["text"])) ?></div>
         <div class="footer">
