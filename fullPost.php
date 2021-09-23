@@ -40,7 +40,7 @@ $dateText = date("d-m-Y H:i", $postData["date"]);
         </div>
         <?php
             if(isLoggedIn())
-            {
+            { 
                 ?>
                     <div class="commentForm">
                         <?php
@@ -56,7 +56,7 @@ $dateText = date("d-m-Y H:i", $postData["date"]);
             {
                 echo("Du behöver vara inloggad för att kommentera" . "</br>");
             }
-            $app->getComments()->selectAndRenderAllComments($postData["id"]);
+            $app->getComments()->selectAndRenderAllComments($postData);
         ?>
     </div>
 <?php

@@ -88,7 +88,9 @@ class CApp
         ?>
         </section>
         <footer>
-           
+            <?php
+                echo("Inloggad som " . $_SESSION["userData"]["username"]);
+            ?>
         </footer>
         <script src="script/tools.js"></script>
         </body>

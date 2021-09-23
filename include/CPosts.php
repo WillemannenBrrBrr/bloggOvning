@@ -52,14 +52,13 @@ class CPosts
         $dateText = date("d-m-Y H:i", $postData["date"]);
         ?>
             <div class="post">
-                
                 <h2><?php echo($postData["subject"]); ?></h2>
                 <div class="text"><?php echo(nl2br($postData["text"])) ?></div>
                 <div class="footer">
                     <p class="author"><a href="profile.php?id=<?php echo($postData["userId"]) ?>"><?php echo($username["username"]) ?></a></p>
                     <p class="date"><?php echo($dateText) ?></p>
                 </div>
-                <a href="fullPost.php?id=<?php echo($postData["id"]) ?>">se alla kommentarer</a>
+                <a href="fullPost.php?id=<?php echo($postData["id"]) ?>">Se alla kommentarer</a>
             </div>
         <?php
     }
