@@ -12,7 +12,10 @@ $user = $app->getDB()->selectByField("users", "id", $userId);
 $username = $user["username"];
 $profilePic = $user["image"];
 
-echo("<img class='profilePic' src='images/" . $profilePic . "'>" . "</br>");
+if(!empty($profilePic))
+{
+    echo("<img class='profilePic' src='images/" . $profilePic . "'>" . "</br>");
+}
 echo("Användarnamn: " . $username . "</br>");
 
 if(isset($_SESSION["userData"]["id"]))
@@ -20,7 +23,7 @@ if(isset($_SESSION["userData"]["id"]))
     if($userId == $_SESSION["userData"]["id"])
     {
         ?>
-        <button id="deleteAccButton">Radera mitt konto</button>
+            <button id="deleteAccButton">Radera mitt konto</button>
         <?php
     }
 }

@@ -17,11 +17,11 @@ class CFormCreator
         echo('<form method="post" enctype="multipart/form-data">');
     }
 
-    public function createInput(string $type, string $name, string $label)
+    public function createInput(string $type, string $name, string $label, string $required = "required")
     {
         echo('<div class="flexForm">');
         /* echo('<label for="' . $name . '">' . $label . ':</label>'); */
-        echo('<input placeholder="' . $label . '" type="' . $type . '" name="' . $name . '" id="' . $name . '" required>');
+        echo('<input placeholder="' . $label . '" type="' . $type . '" name="' . $name . '" id="' . $name . '" "' . $required . '">');
         echo('</div>');
     }
 
