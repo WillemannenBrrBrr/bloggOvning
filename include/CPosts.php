@@ -29,6 +29,7 @@ class CPosts
             $form->createTextArea("text", "Brödtext");
             $form->createSubmit("Lägg upp");
             $form->closeForm();
+            echo("</br>");
         }
         else
         {

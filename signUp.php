@@ -7,8 +7,8 @@ $form = $app->getForm();
 
 if(!empty($_POST))
 {
-    $target = "images/".basename($_FILES["image"]["name"]);
     $image = $_FILES["image"]["name"];
+    $target = "images/".basename($image);
     $username = $_POST["username"];
 
     $usernameCheck = $app->getDB()->selectByField("users", "username", $username);
@@ -28,12 +28,12 @@ if(!empty($_POST))
         $data = ["username" => $username, "password" => $password, "image" => $image];
         $app->getDB()->insert("users", $data);
 
-        if(!empty($_POST["image"]) && !move_uploaded_file($_FILES["image"]["tmp_name"], $target))
+        if(!empty($_POST["image"]))
+        if(!move_uploaded_file($_FILES["image"]["tmp_name"], $target))
         {
             throw new Exception("någonting gick snett");
         }
         
-    
         $user = $app->getdb()->selectByField("users", "username", $username);
         
         $_SESSION["loggedIn"] = true;

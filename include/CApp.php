@@ -89,13 +89,16 @@ class CApp
         </section>
         <footer>
             <?php
-                if(isLoggedIn())
+                if(substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1) != "profile.php")
                 {
-                    echo("Inloggad som " . $_SESSION["userData"]["username"]);
-                }
-                else
-                {
-                    echo("Du är inte inloggad");
+                    if(isLoggedIn())
+                    {
+                        echo("Inloggad som " . $_SESSION["userData"]["username"]);
+                    }
+                    else
+                    {
+                        echo("Du är inte inloggad");
+                    }
                 }
             ?>
         </footer>

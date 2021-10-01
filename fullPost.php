@@ -65,7 +65,7 @@ $dateText = date("d-m-Y H:i", $postData["date"]);
             }
             else
             {
-                echo("Du behöver vara inloggad för att kommentera" . "</br>");
+                echo("Du behöver vara inloggad för att kommentera" . "</br></br>");
             }
             $app->getComments()->selectAndRenderAllComments($postData);
         ?>
