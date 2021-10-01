@@ -28,10 +28,12 @@ if(!empty($_POST))
         $data = ["username" => $username, "password" => $password, "image" => $image];
         $app->getDB()->insert("users", $data);
 
-        if(!empty($_POST["image"]))
-        if(!move_uploaded_file($_FILES["image"]["tmp_name"], $target))
+        if(!empty($image))
         {
-            throw new Exception("någonting gick snett");
+            if(!move_uploaded_file($_FILES["image"]["tmp_name"], $target))
+            {
+                throw new Exception("någonting gick snett");
+            }
         }
         
         $user = $app->getdb()->selectByField("users", "username", $username);
