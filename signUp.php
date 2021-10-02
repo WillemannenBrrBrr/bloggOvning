@@ -25,7 +25,7 @@ if(!empty($_POST))
     
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-        $data = ["username" => $username, "password" => $password, "image" => $image];
+        $data = ["username" => $username, "password" => $password, "image" => $image, "made" => time()];
         $app->getDB()->insert("users", $data);
 
         if(!empty($image))

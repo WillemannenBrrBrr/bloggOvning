@@ -9,14 +9,20 @@ if(isset($_GET["id"]))
 }
 $user = $app->getDB()->selectByField("users", "id", $userId);
 
-$username = $user["username"];
-$profilePic = $user["image"];
+$dateOfAcc = date("d-m-Y", $user["made"]);
 
-if(!empty($profilePic))
-{
-    echo("<img class='profilePic' src='images/" . $profilePic . "'>" . "</br>");
-}
-echo("Användarnamn: " . $username . "</br>");
+?>
+<div id="accDetails">
+    <?php
+        if(!empty($user["image"]))
+        {
+            echo("<img class='profilePic' src='images/" . $user["image"] . "'>" . "</br>");
+        }
+        echo("Användarnamn: " . $user["username"] . "</br>");
+        echo("Skapades: " . $dateOfAcc . "</br>");
+    ?>
+</div>
+<?php
 
 if(isset($_SESSION["userData"]["id"]))
 {
