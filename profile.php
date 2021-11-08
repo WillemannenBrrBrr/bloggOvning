@@ -11,6 +11,15 @@ $user = $app->getDB()->selectByField("users", "id", $userId);
 
 $dateOfAcc = date("d-m-Y", $user["made"]);
 
+if(isset($_SESSION["userData"]["id"]))
+{
+    if($userId == $_SESSION["userData"]["id"])
+    {
+        ?>
+            <button id="deleteAccButton">Radera mitt konto</button>
+        <?php
+    }
+}
 ?>
 <div id="accDetails">
     <?php
@@ -23,16 +32,7 @@ $dateOfAcc = date("d-m-Y", $user["made"]);
     ?>
 </div>
 <?php
-
-if(isset($_SESSION["userData"]["id"]))
-{
-    if($userId == $_SESSION["userData"]["id"])
-    {
-        ?>
-            <button id="deleteAccButton">Radera mitt konto</button>
-        <?php
-    }
-}
+//rendera alla inlägg användaren har gjort
 
 $app->renderFooter();
 

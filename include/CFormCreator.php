@@ -27,7 +27,7 @@ class CFormCreator
 
     public function createTextArea(string $name, string $label)
     {
-        echo('<textarea placeholder="' . $label . '" name="' . $name . '"></textarea>');
+        echo('<textarea placeholder="' . $label . '" name="' . $name . '" required></textarea>');
     }
 
     public function createSubmit(string $label)
