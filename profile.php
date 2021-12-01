@@ -32,7 +32,7 @@ if(isset($_SESSION["userData"]["id"]))
     ?>
 </div>
 <?php
-//rendera alla inlägg användaren har gjort
+//rendera alla inlägg användaren har gjort  
 
 $app->renderFooter();
 

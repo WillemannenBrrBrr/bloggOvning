@@ -30,7 +30,7 @@ if(!empty($_POST))
 
         if(!empty($image))
         {
-            //gör en sntanadard bild för alla som inte välger en egen porfilbild
+            //gör en sntanadard bild för alla som inte välger en egen porfilbild 
             if(!move_uploaded_file($_FILES["image"]["tmp_name"], $target))
             {
                 throw new Exception("någonting gick snett");
