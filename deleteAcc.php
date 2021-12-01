@@ -16,9 +16,12 @@ $app->getDB()->query($query);
 $query = "SELECT * FROM `users` WHERE image = '$image'";
 $result = $app->getDB()->query($query);
 
-if($result->num_rows == 1)
-{   
-    unlink("images/" . $image);
+if(!$image == "DefultProfilePic.png")
+{
+    if($result->num_rows == 1)
+    {   
+        unlink("images/" . $image);
+    }
 }
 
 $query = "DELETE FROM users WHERE id = $id";

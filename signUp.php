@@ -25,17 +25,21 @@ if(!empty($_POST))
     
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-        $data = ["username" => $username, "password" => $password, "image" => $image, "made" => time()];
-        $app->getDB()->insert("users", $data);
-
         if(!empty($image))
         {
-            //gör en sntanadard bild för alla som inte välger en egen porfilbild 
             if(!move_uploaded_file($_FILES["image"]["tmp_name"], $target))
             {
                 throw new Exception("någonting gick snett");
             }
         }
+        else
+        {
+            $image = "DefultProfilePic.png";
+        }
+
+        $data = ["username" => $username, "password" => $password, "image" => $image, "made" => time()];
+        $app->getDB()->insert("users", $data);
+
         
         $user = $app->getdb()->selectByField("users", "username", $username);
         
