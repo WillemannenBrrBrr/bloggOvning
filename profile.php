@@ -61,7 +61,10 @@ else
 {
     echo("Den här användaren har inga inlägg");
 }
-
+$image = $user["image"];
+$query = "SELECT * FROM `users` WHERE image = '$image'";
+$result = $app->getDB()->query($query);
+echo($result->num_rows);
 
 $app->renderFooter();
 
