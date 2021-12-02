@@ -68,6 +68,12 @@ div.post
 	text-align: left;
 }
 
+img.postProfilePic
+{
+	max-width: 20px;
+	max-height: 20px;
+}
+
 div.post h2
 {
 	margin-top: 0;

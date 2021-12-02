@@ -39,16 +39,9 @@ class CPosts
 
     public function renderPost(array $postData)
     {
-        $query = "SELECT username FROM users WHERE id = " . $postData["userId"] . "";
+        $query = "SELECT * FROM users WHERE id = " . $postData["userId"] . "";
         $result = $this->m_app->getDB()->query($query);
-        if(empty($result->num_rows))
-        {
-            $username["username"] = "Inget anvendarnamn hittades";  
-        }
-        else
-        {
-            $username = $result->fetch_assoc();
-        }
+        $userData = $result->fetch_assoc();
 
         $dateText = date("d-m-Y H:i", $postData["date"]);
         ?>
@@ -56,7 +49,7 @@ class CPosts
                 <h2><?php echo($postData["subject"]); ?></h2>
                 <div class="text"><?php echo(nl2br($postData["text"])) ?></div>
                 <div class="footer">
-                    <p class="author"><a href="profile.php?id=<?php echo($postData["userId"]) ?>"><?php echo($username["username"]) ?></a></p>
+                    <p class="author"><a href="profile.php?id=<?php echo($postData["userId"]) ?>"><img class="postProfilePic" src="images/<?php echo($userData["image"]); ?>"> <?php echo($userData["username"]); ?></a></p>
                     <p class="date"><?php echo($dateText) ?></p>
                 </div>
                 <a href="fullPost.php?id=<?php echo($postData["id"]) ?>">Se alla kommentarer</a>
