@@ -31,9 +31,16 @@ if(isset($_SESSION["userData"]["id"]))
         echo("Skapades: " . $dateOfAcc . "</br>");
     ?>
 </div>
+<!-- <div class="postOrder">
+    <label for="order">Order:</label>
+    <select id="order">
+        <option value="DESC">Nyast först</option>
+        <option value="ASC">Äldst först</option>
+    </select>
+</div> -->
 <?php
 
-$query = "SELECT * FROM posts WHERE userid = $userId";
+$query = "SELECT * FROM posts WHERE userid = $userId ORDER BY `date` DESC";
 $result = $app->getDB()->query($query);
 
 $numberOfPosts = $result->num_rows;

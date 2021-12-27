@@ -59,7 +59,7 @@ class CPosts
 
     public function selectAndRenderAllPosts()
     {
-        $result = $this->m_app->getDB()->selectAll("posts");
+        $result = $this->m_app->getDB()->selectAll("posts", "DESC");
         $numberOfPosts = $result->num_rows;
 
         if($numberOfPosts > 0)

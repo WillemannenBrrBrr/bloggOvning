@@ -97,9 +97,9 @@ class CDatabase
 		return $result->fetch_assoc();
 	}
 
-	public function selectAll(string $table)
+	public function selectAll(string $table, string $order = "ASC")
 	{
-		$query = "SELECT * FROM $table";
+		$query = "SELECT * FROM $table ORDER BY `date` $order";
 		$result = $this->query($query);
 		return $result;
 	}
